@@ -5,12 +5,15 @@ import { ArrowLeft, Phone, MessageSquare } from "lucide-react";
 
 export function generateStaticParams() {
   return services.map((service) => ({
-    slug: service.slug,
+    params: {
+      slug: service.slug,
+    },
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = services.find((s) => s.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolved = await params;
+  const service = services.find((s) => s.slug === resolved?.slug);
   if (!service) return { title: "Not Found" };
   return {
     title: service.metaTitle,
@@ -18,8 +21,10 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = services.find((s) => s.slug === params.slug);
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolved = await params;
+  const slug = resolved?.slug;
+  const service = services.find((s) => s.slug === slug);
   if (!service) return notFound();
 
   return (
