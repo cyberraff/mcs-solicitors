@@ -1,7 +1,7 @@
 # MCS Solicitors — Structured Build Guide (Start → Finish)
 
 Target: AI agent execution | Tier 1 static site | Next.js 14+ App Router + Tailwind + TypeScript
-Repo target: `mcs-solicitors-demo` → Vercel deploy
+Repo target: `mcs-solicitors` → Vercel deploy
 
 ---
 
@@ -72,7 +72,7 @@ Repo target: `mcs-solicitors-demo` → Vercel deploy
 ---
 
 ## Phase 8 — Deploy (Task 13)
-- Push to `mcs-solicitors-demo` (GitHub)
+- Push to `mcs-solicitors` (GitHub)
 - Connect Vercel; set env vars (`RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY`) in Vercel, NOT in repo
 - Acceptance: live URL loads on desktop + mobile
 
